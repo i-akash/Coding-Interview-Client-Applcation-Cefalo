@@ -1,0 +1,16 @@
+.chatBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    background-color: whitesmoke;
+}
+
+/* 
+.chatBoxHeader {
+    background-color: black;
+    height: 2.8rem;
+    border-bottom: 1.5px solid rgba(128, 128, 128, 0.308);
+    padding-bottom: 3px;
+    text-align: center;
+} */

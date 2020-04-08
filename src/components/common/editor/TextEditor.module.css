@@ -1,0 +1,20 @@
+.editor {
+    margin: 2px;
+    width: 100%;
+}
+
+.toolbar {
+    font-size: 10px !important;
+    display: flex;
+}
+
+.textArea {
+    border: 1px solid rgba(128, 128, 128, 0.144);
+    border-radius: 3px;
+    padding: 10px;
+    box-shadow: inset 0 0 3px #cfcece;
+
+    min-height: 35vh;
+    height: 35vh;
+    overflow-y: auto;
+}

@@ -1,0 +1,25 @@
+.lineNumber::before {
+    content: ' ';
+}
+
+
+.lineNumber:hover,
+.lineNumber:hover::before {
+    font-weight: bolder;
+    content: "+";
+    cursor: pointer;
+}
+
+.selectedLine {
+    font-weight: bolder;
+}
+
+.selectedLine::before {
+    font-weight: bolder;
+    content: "-";
+}
+
+.selectedLine:hover,
+.selectedLine:hover::before {
+    cursor: pointer;
+}

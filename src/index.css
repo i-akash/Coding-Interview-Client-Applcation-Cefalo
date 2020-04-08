@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+/* tab*/
+.tabpane {
+  height: 100% !important;
+  width: 50% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.ui.tab.active {
+  height: 100%;
+  flex-shrink: 2;
+  overflow-y: auto;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+.chat-pane {
+  padding: 0 !important;
+}
+
+/* message */
+.myMessage p {
+  margin: 0 !important;
+  word-break: break-all;
+}
+
+.myMessage pre {
+  margin: 5px !important;
+}
+
+.myMessage pre code {
+  color: rgb(64, 128, 128);
+  border: 1px solid rgba(177, 177, 177, 0.11);
+  border-radius: 2px;
+  padding: 2px;
+  background-color: rgba(177, 177, 177, 0.11);
+  margin: 2px !important;
+
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* menu */
+.ui.menu {
+  margin-bottom: 0 !important;
+}
+
+.emoji-picker-react {
+  position: absolute !important;
+  left: 10vh !important;
+  bottom: 2rem !important;
+}
+
+/* text editor */
+.rdw-option-wrapper {
+  height: fit-content !important;
+  min-width: fit-content !important;
+}
+
+.rdw-option-wrapper img {
+  height: 12px !important;
+  min-width: 12px !important;
+}
+
+.rdw-inline-wrapper {
+  height: 15px !important;
+}
+
+.rdw-dropdown-wrapper {
+  height: 15px !important;
+}
+
+
+/* button */
+
+.ui.green.button,
+.ui.green.buttons .button {
+  margin: 2px !important;
+}
+
+.ui.mini.input {
+  margin: 2px 0 2px 2px !important;
+}
+
+/* code highlight */
+.highlightedBlock {
+  max-width: 42vw;
+  max-height: 35vh;
+  overflow: auto;
+}
+
+.highlightedBlock pre {
+  margin: 0px !important;
+  background-color: whitesmoke !important;
+}
+
+/* accordian */
+
+.ui.styled.accordion {
+  margin: 2px !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+
+
+/* icon */
+i.brown.icon {
+  color: white !important;
+}
+
+/* input */
+.ui.mini.input {
+  max-width: 43vw !important;
+}
+
+
+/* draft area */
+.draftArea {
+  flex-grow: 2;
+}
+
+.draftArea .DraftEditor-root {
+  flex-grow: 2;
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 18px;
+  overflow-y: auto;
+  min-height: 46px;
+  max-height: 100px;
+  max-width: 40vw;
+  padding: 5px;
+  word-break: break-all;
+  border-radius: 2px;
+  background-color: rgb(224, 225, 226);
+}
+
+.draftArea .DraftEditor-editorContainer,
+.draftArea .public-DraftEditor-content {
+  height: 100%;
+}
+
+.public-DraftStyleDefault-pre {
+  background-color: rgb(224, 225, 226) !important;
+}
+
+
+/* label */
+.ui.basic.label {
+  margin: 2px !important;
+}
+
+/* checkbox */
+.ui.checkbox {
+  margin: 2px !important;
+}
