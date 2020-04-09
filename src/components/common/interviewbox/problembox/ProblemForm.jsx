@@ -160,7 +160,7 @@ class ProblemForm extends Component {
               size="mini"
               onClick={() => this.setState({ modalOpen: !modalOpen })}
             >
-              Add Tests
+              Add Tests Cases
             </Button>
           </Segment>
           <Segment

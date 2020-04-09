@@ -1,5 +1,4 @@
-let jsTemplate =
-    `
+let jsTemplate = `
 let solve=(input)=>{
     // write your solution here ...
 
@@ -8,23 +7,22 @@ let solve=(input)=>{
 
 
 solve(input)
-`
+`;
 
-let pyTemplate =
-    `
+let pyTemplate = `
 def solve(input):
-    # write your solution here
+    # write your solution here. N.B. sys and json already been imported 
 
 
     return 1
 
 
-`
+`;
 
 export const getJsTemplate = (inputConstraint) => {
-    return jsTemplate.replace(/input/g, Object.keys(inputConstraint).join(','))
-}
+  return jsTemplate.replace(/input/g, Object.keys(inputConstraint).join(","));
+};
 
 export const getPyTemplate = (inputConstraint) => {
-    return pyTemplate.replace(/input/g, Object.keys(inputConstraint).join(','))
-}
+  return pyTemplate.replace(/input/g, Object.keys(inputConstraint).join(","));
+};
