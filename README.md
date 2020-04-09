@@ -2,12 +2,10 @@
 
 #### Run Instruction
 
-* `git clone https://github.com/i-akash/Coding-Interview-Client-Applcation-Cefalo.git`
-* `cd Coding-Interview-Client-Applcation-Cefalo`
-* `npm install`
-* `npm start`
-
-
+- `git clone https://github.com/i-akash/Coding-Interview-Client-Applcation-Cefalo.git`
+- `cd Coding-Interview-Client-Applcation-Cefalo`
+- `npm install`
+- `npm start`
 
 ## Docs
 
@@ -38,18 +36,16 @@
     }
     ```
 
-
-
 ## Features
 
 ##### code selection, inline code format, emoji
 
-![https://i.ibb.co/mCdMy0Q/Screenshot-9.png]()
+![pic1](https://i.ibb.co/mCdMy0Q/Screenshot-9.png)
 
 ##### custom input and test case support with python and js
 
-![https://i.ibb.co/Z2cLzp0/Screenshot-10.png]()
+![pic2](https://i.ibb.co/Z2cLzp0/Screenshot-10.png)
 
-##### multiple room support and 
+##### multiple room support and
 
-![https://i.ibb.co/g7syr3H/Screenshot-11.png]()
+![pic3](https://i.ibb.co/g7syr3H/Screenshot-11.png)
