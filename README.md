@@ -1,38 +1,32 @@
-# Coding Interview Client Application 
+# Coding Interview Client Application
 
-#### Instruction
+#### Run Instruction
 
-* coming soon
-
-  
+- Will be updated soon
 
 #### Create Problem Tab
 
-* Input Constraint ( `format : json` ) 
+- Input Constraint ( `format : json` )
 
-  * Example
+  - Example
 
     ```json
     {
-    	"arrayLength" : "int",
-        "array" : "[string]"
+      "arrayLength": "int",
+      "array": "[string]"
     }
     ```
 
     ```json
-    
     {
-    	"str1" : "string",
-        "str2" : "string"
+      "str1": "string",
+      "str2": "string"
     }
     ```
 
     ```json
-    
     {
-    	"a" : "float",
-        "b" : "int"
+      "a": "float",
+      "b": "int"
     }
     ```
-
-    
