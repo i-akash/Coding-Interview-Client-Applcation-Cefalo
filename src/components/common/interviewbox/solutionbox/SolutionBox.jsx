@@ -35,17 +35,33 @@ class SolutionBox extends Component {
     const { editorToggler } = this.state;
     return (
       <div>
-        {!!this.props.problem.inputConstraint && (
-          <Button size="mini" color="green" onClick={this.toggleEditor}>
-            {editorToggler ? "Back" : "Solve"}
-          </Button>
+        {!!this.props.problem.inputConstraint && editorToggler && (
+          <Button
+            icon="arrow left"
+            circular
+            size="mini"
+            onClick={this.toggleEditor}
+          />
         )}
-        {sessionStorage.getItem("userRole") === "Interviewer" &&
+        {!!this.props.problem.inputConstraint && !editorToggler && (
+          <Button
+            icon="lightbulb"
+            content="solve"
+            color="green"
+            circular
+            size="mini"
+            onClick={this.toggleEditor}
+          />
+        )}
+
+        {sessionStorage.getItem("userName") === this.props.room.owner &&
           !editorToggler && (
             <Button
-              size="mini"
+              icon="close"
+              content="all"
+              circular
               color="red"
-              content="remove all"
+              size="mini"
               onClick={this.removeAllSolutions}
             />
           )}
@@ -60,6 +76,7 @@ class SolutionBox extends Component {
 }
 const mapStateToProps = (state) => ({
   problem: state.Problems,
+  room: state.Room,
 });
 export default connect(mapStateToProps, {
   removeAllSolutionAction,

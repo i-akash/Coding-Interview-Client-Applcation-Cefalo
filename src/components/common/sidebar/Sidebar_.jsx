@@ -11,6 +11,7 @@ export default function Sidebar_({
   removeAllMessage,
   userWindow,
   children,
+  owner,
 }) {
   return (
     <div className={getClass(userWindow)}>
@@ -18,12 +19,12 @@ export default function Sidebar_({
         <Icon link name="sidebar" color="gray" />
       </div>
       <Transition visible={userWindow} duration={{ hide: 0, show: 500 }}>
-        <div>{children}</div>
+        <div style={{ overflowY: "auto" }}>{children}</div>
       </Transition>
       <Transition visible={!userWindow} duration={{ hide: 0, show: 500 }}>
         <label className={Styles.placeHolderClose}>Active Users</label>
       </Transition>
-      {sessionStorage.getItem("userRole") === "Interviewer" && (
+      {sessionStorage.getItem("userName") === owner && (
         <div
           className={Styles.arrow}
           onClick={removeAllMessage}
@@ -36,7 +37,7 @@ export default function Sidebar_({
         className={Styles.arrow}
         onClick={logOutRoom}
         style={
-          sessionStorage.getItem("userRole") === "Interviewer"
+          sessionStorage.getItem("userName") === owner
             ? {}
             : {
                 marginTop: "auto",

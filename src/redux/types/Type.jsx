@@ -20,3 +20,8 @@ export const SEEN_SOLUTION_NOTIFY = "SEEN_SOLUTION_NOTIFY";
 
 export const NEW_PROBLEM_NOTIFY = "NEW_PROBLEM_NOTIFY";
 export const SEEN_PROBLEM_NOTIFY = "SEEN_PROBLEM_NOTIFY";
+
+export const ROOM_INFO = "ROOM_INFO";
+export const NEW_ROOM_INFO = "NEW_ROOM_INFO";
+
+export const USER_INFO = "USER_INFO";

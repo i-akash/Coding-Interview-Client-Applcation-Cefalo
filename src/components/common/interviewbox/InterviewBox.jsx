@@ -51,8 +51,7 @@ class InterviewBox extends React.Component {
   };
 
   getNotify2 = (numbers, index) => {
-    const { activeIndex2 } = this.state;
-    return !!numbers && index !== activeIndex2 ? (
+    return !!numbers ? (
       <span className={Styles.notify}>{numbers}</span>
     ) : (
       <span className={Styles.NoNotify}>{numbers}</span>
@@ -132,9 +131,9 @@ class InterviewBox extends React.Component {
       },
       {
         menuItem: (
-          <Menu.Item key="Profile">
+          <Menu.Item key="Session">
             <Icon name="user" />
-            Profile
+            {this.props.user.userName}
             <span className={Styles.NoNotify}>0</span>
           </Menu.Item>
         ),
@@ -173,6 +172,7 @@ class InterviewBox extends React.Component {
 
 const mapStateToProps = (state) => ({
   notifications: state.Notifications,
+  user: state.User,
 });
 
 export default connect(mapStateToProps)(InterviewBox);

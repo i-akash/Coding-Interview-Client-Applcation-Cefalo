@@ -5,11 +5,28 @@ import {
   ALL_CLIENT_IN_ROOM,
   NEW_JOINING_ROOM,
   LEFT_ROOM,
+  KICK_OUT,
 } from "../../../sockets/EventType";
 
-export default class ActiveUsers extends Component {
+import { connect } from "react-redux";
+
+class ActiveUsers extends Component {
   state = {
     activeUsers: [],
+  };
+
+  kickOut = (kickedUser) => {
+    const { room, user } = this.props;
+    if (room.owner === user.userName && user.userName !== kickedUser.userName) {
+      socketClient.pushToRoom(
+        KICK_OUT,
+        kickedUser.userRoom,
+        { socketId: kickedUser.userId },
+        (error) => console.log(error)
+      );
+    } else {
+      console.log("You are not allowed");
+    }
   };
 
   componentDidMount = () => {
@@ -46,7 +63,9 @@ export default class ActiveUsers extends Component {
               borderRadius: 0,
               borderLeft: "2px solid #00CB54",
               color: "white",
+              cursor: "pointer",
             }}
+            onClick={() => this.kickOut(user)}
           >
             <Header color="grey" size="small">
               {user.userName}
@@ -58,3 +77,9 @@ export default class ActiveUsers extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  room: state.Room,
+  user: state.User,
+});
+export default connect(mapStateToProps)(ActiveUsers);

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Transition, Checkbox, Segment } from "semantic-ui-react";
+import { Button, Transition, Checkbox, Segment, Icon } from "semantic-ui-react";
 import CodeEditor from "../../editor/CodeEditor";
 import Styles from "./Editorbox.module.css";
 
@@ -33,7 +33,7 @@ class Editorbox extends Component {
   onCodeChange = (sourceCode) => {
     this.setState({ sourceCode });
   };
-  selectLanguage = (language) => {
+  selectLanguage = ({ text: language }) => {
     let { inputConstraint } = this.props.problems;
     switch (language) {
       case "javascript":
@@ -114,6 +114,7 @@ class Editorbox extends Component {
           onSelect={this.selectLanguage}
           options={options}
           placeholder="language"
+          allowAdditions={false}
         />
         <CodeEditor
           height={"50vh"}
@@ -124,12 +125,20 @@ class Editorbox extends Component {
         />
 
         <div>
-          <Button color="green" size="mini" onClick={this.onRun}>
-            Run
-          </Button>
-          <Button color="green" size="mini" onClick={this.onSubmit}>
-            Submit
-          </Button>
+          <Button
+            icon="settings"
+            content="Run"
+            color="green"
+            size="mini"
+            onClick={this.onRun}
+          />
+          <Button
+            icon="check"
+            content="Submit"
+            color="green"
+            size="mini"
+            onClick={this.onSubmit}
+          />
         </div>
         <Checkbox
           label={"custom input"}
@@ -162,13 +171,13 @@ export default connect(mapStateToProps)(Editorbox);
 
 const options = [
   {
-    key: 1,
+    key: 0,
     text: "javascript",
-    value: "javascript",
+    value: 0,
   },
   {
-    key: 2,
+    key: 1,
     text: "python",
-    value: "python",
+    value: 1,
   },
 ];

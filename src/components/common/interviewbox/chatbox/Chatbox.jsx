@@ -76,14 +76,17 @@ class Chatbox extends Component {
       () => console.log("delevered")
     );
 
-    this.setState({ selectedCodeObject: {}, text: "" });
+    this.setState({ text: "" });
+    this.clearCodeSelection();
+  };
+
+  clearCodeSelection = () => {
+    this.setState({ selectedCodeObject: {} });
     this.props.clearSelectedLines();
 
     if (!!this.props.clearCodeSelctionFormat)
       this.props.clearCodeSelctionFormat();
   };
-
-  onClear = () => {};
 
   render() {
     const { selectedCodeObject, typingUser } = this.state;
@@ -94,6 +97,7 @@ class Chatbox extends Component {
           updateCodeSelection={this.props.updateCodeSelection}
         />
         <ChatTextArea
+          clearCodeSelection={this.clearCodeSelection}
           selectedCodeObject={selectedCodeObject}
           onMessageSend={this.onMessageSend}
           onTyping={this.onTyping}

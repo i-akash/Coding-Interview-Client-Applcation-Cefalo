@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import Styles from "./Problembox.module.css";
 import TextEditor from "../../editor/TextEditor";
-import { Button, Header, Input, Label, Segment } from "semantic-ui-react";
+import {
+  Button,
+  Header,
+  Input,
+  Label,
+  Segment,
+  Icon,
+  Grid,
+} from "semantic-ui-react";
 import socketClient from "../../../../sockets/SocketClient";
 
 import { NEW_PROBLEM } from "../../../../sockets/EventType";
@@ -99,7 +107,7 @@ class ProblemForm extends Component {
     } = this.state;
 
     return (
-      <div className={Styles.problemBox}>
+      <div>
         <FloatingPage
           onClick={this.toggleModal}
           clickText="Ok"
@@ -128,63 +136,91 @@ class ProblemForm extends Component {
                 onChange={this.onChange}
               />
             </div>
-            <Button color="green" size="mini" onClick={this.onPushTestCases}>
-              Add
-            </Button>
-            <Button color="red" size="mini" onClick={this.onPopTestCases}>
-              Pop
-            </Button>
+            <Button
+              icon="plus"
+              content="add"
+              color="green"
+              circular
+              size="mini"
+              onClick={this.onPushTestCases}
+            />
+            <Button
+              color="red"
+              circular
+              icon="minus"
+              content="pop"
+              size="mini"
+              onClick={this.onPopTestCases}
+            />
           </Segment>
         </FloatingPage>
 
-        <Segment basic loading={loading} style={{ margin: "0", padding: "0" }}>
-          <Header textAlign="center">Create Problem</Header>
-          <Segment>
-            <Input
-              name="title"
-              fluid
-              icon="tag"
-              iconPosition="left"
-              size="mini"
-              onChange={this.onChange}
-              value={title}
-            />
-            <TextEditor
-              updateContent={this.updateContent}
-              editorContent={this.props.problem.problemStatement}
-            />
-          </Segment>
-          <Segment>
-            <Button
-              color="green"
-              size="mini"
-              onClick={() => this.setState({ modalOpen: !modalOpen })}
-            >
-              Add Tests Cases
-            </Button>
-          </Segment>
-          <Segment
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <div>
-              <Label basic>Input Constraint</Label>
-            </div>
-            <CodeEditor
-              height={"20vh"}
-              styleClass={Styles.monacoEditor}
-              onCodeChange={this.updateConstraint}
-              value={constraint}
-              language={"json"}
-            />
-          </Segment>
-          <Button color="green" size="mini" onClick={this.onSubmit}>
-            Submit
-          </Button>
-        </Segment>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column>
+              <Header textAlign="center" as="h3">
+                Problem Editor
+              </Header>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={1} stretched>
+            <Grid.Column>
+              <Input
+                name="title"
+                fluid
+                icon="tag"
+                iconPosition="left"
+                size="small"
+                onChange={this.onChange}
+                value={title}
+                placeholder="Title"
+              />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={1}>
+            <Grid.Column>
+              <TextEditor
+                updateContent={this.updateContent}
+                editorContent={this.props.problem.problemStatement}
+              />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={1}>
+            <Grid.Column>
+              <Button
+                color="green"
+                size="mini"
+                icon="plus"
+                content="Test Cases"
+                onClick={() => this.setState({ modalOpen: !modalOpen })}
+              />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={1}>
+            <Grid.Column>
+              <Header as="h4">Input Constraint</Header>
+
+              <CodeEditor
+                height={"20vh"}
+                styleClass={Styles.monacoEditor}
+                onCodeChange={this.updateConstraint}
+                value={constraint}
+                language={"json"}
+              />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={1}>
+            <Grid.Column>
+              <Button
+                icon="check"
+                content="Submit"
+                color="green"
+                size="mini"
+                onClick={this.onSubmit}
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </div>
     );
   }

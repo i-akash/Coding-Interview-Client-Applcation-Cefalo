@@ -1,7 +1,7 @@
 import React from "react";
 
 import ChatPage from "./components/pages/chat/ChatPage";
-import LoginPage from "./components/pages/steps/LoginPage";
+import LoginPage from "./components/pages/login/LoginPage";
 import socketClient from "./sockets/SocketClient";
 
 //redux
@@ -31,22 +31,37 @@ import {
   ALL_SOLUTION,
   REMOVE_ALL_MESSAGES,
   REMOVE_ALL_SOLUTION,
+  ROOM_INFO,
+  CHANGE_ROOM_INFO,
+  KICK_OUT,
 } from "./sockets/EventType";
 import {
   messageArriveNotifyAction,
   problemArriveNotifyAction,
   solutionArriveNotifyAction,
 } from "./redux/actions/NotifyActions";
+import {
+  getRoomInfoAction,
+  newRoomInfoAction,
+} from "./redux/actions/RoomActions";
+import { USER_INFO } from "./redux/types/Type";
 
 class App extends React.Component {
   state = {
     page: 1,
   };
-
   componentDidMount = () => {
-    let userInfo = this.getStorageInfo();
+    let { userInfo, roomPassword } = this.getStorageInfo();
     if (!!userInfo.userName && !!userInfo.userRole && !!userInfo.userRoom) {
-      socketClient.joinRoom(userInfo, (rooms) => this.onRoomJoined(userInfo));
+      this.setState({ page: 2 });
+      socketClient.joinRoom({ userInfo, roomPassword }, (error) => {
+        if (error) {
+          this.setState({ page: 1 });
+          console.log(error);
+          return;
+        }
+        this.onRoomJoined({ userInfo, roomPassword });
+      });
     }
   };
 
@@ -55,26 +70,29 @@ class App extends React.Component {
     userInfo.userName = sessionStorage.getItem("userName");
     userInfo.userRole = sessionStorage.getItem("userRole");
     userInfo.userRoom = sessionStorage.getItem("userRoom");
-    return userInfo;
+    let roomPassword = sessionStorage.getItem("roomPassword");
+    return { userInfo, roomPassword };
   };
 
-  setStorageInfo = (userInfo) => {
+  setStorageInfo = ({ userInfo, roomPassword }) => {
     sessionStorage.setItem("userName", userInfo.userName);
     sessionStorage.setItem("userRole", userInfo.userRole);
     sessionStorage.setItem("userRoom", userInfo.userRoom);
+    sessionStorage.setItem("roomPassword", roomPassword);
   };
 
   clearStorageInfo = () => {
     sessionStorage.clear();
   };
 
-  onRoomJoined = (userInfo) => {
-    this.setStorageInfo(userInfo);
+  onRoomJoined = ({ userInfo, roomPassword }) => {
     this.setState({ page: 2 });
-    this.onListenEvents(userInfo);
+    this.setStorageInfo({ userInfo, roomPassword });
+    this.props.setUserInfoDispatcher({ ...userInfo, roomPassword });
+    this.onListenEvents({ userInfo, roomPassword });
   };
 
-  onListenEvents = (userInfo) => {
+  onListenEvents = ({ userInfo, roomPassword }) => {
     socketClient.listeningOn(NEW_MESSAGE, (data) => {
       this.props.newMessageDispatcher(data);
       this.props.newMessageNotifyDispatcher();
@@ -96,6 +114,12 @@ class App extends React.Component {
     socketClient.listeningOn(REMOVE_ALL_SOLUTION, (data) => {
       this.props.removeAllSolutionDispatcher();
     });
+    socketClient.listeningOn(
+      CHANGE_ROOM_INFO,
+      this.props.newRoomInfoDispatcher
+    );
+
+    socketClient.listeningOn(KICK_OUT, this.logOutRoom);
 
     socketClient.fetchFromRoom(
       ALL_MESSAGE,
@@ -112,13 +136,16 @@ class App extends React.Component {
       userInfo.userRoom,
       this.props.allSolutionDispatcher
     );
+    socketClient.fetchFromRoom(
+      ROOM_INFO,
+      userInfo.userRoom,
+      this.props.getRoomInfoDispatcher
+    );
   };
 
   logOutRoom = () => {
-    console.log("logged out");
-
     this.clearStorageInfo();
-    this.setState({ page: 1 });
+    window.location.reload();
   };
   render() {
     const { page, userInfo } = this.state;
@@ -147,6 +174,10 @@ const mapStateToDispatch = (dispatch) => ({
   newSolutionNotifyDispatcher: () => dispatch(solutionArriveNotifyAction()),
   allSolutionDispatcher: (data) => dispatch(allSolutionAction(data)),
   removeAllSolutionDispatcher: () => dispatch(removeAllSolutionAction()),
+
+  getRoomInfoDispatcher: (data) => dispatch(getRoomInfoAction(data)),
+  newRoomInfoDispatcher: (data) => dispatch(newRoomInfoAction(data)),
+  setUserInfoDispatcher: (data) => dispatch({ type: USER_INFO, payload: data }),
 });
 
 export default connect(null, mapStateToDispatch)(App);

@@ -28,7 +28,7 @@ export default class CollapseList extends Component {
     const { header, lists, run, title } = this.props;
     const { activeIndex } = this.state;
     return (
-      <Accordion styled>
+      <Accordion>
         <Header textAlign="center">{header}</Header>
         {lists.map((item, index) => (
           <div key={index}>
@@ -40,7 +40,10 @@ export default class CollapseList extends Component {
               <Icon name={getIcon(item, run)} color={getColor(item, run)} />
               {`${title} ${index}`}
             </Accordion.Title>
-            <Accordion.Content active={activeIndex === index}>
+            <Accordion.Content
+              active={activeIndex === index}
+              style={{ backgroundColor: "whitesmoke" }}
+            >
               <Label basic>
                 <Icon name="file" />
                 Input : {item.input}

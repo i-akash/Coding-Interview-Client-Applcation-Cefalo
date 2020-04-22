@@ -7,6 +7,9 @@
 .lineNumber:hover::before {
     font-weight: bolder;
     content: "+";
+    background-color: black;
+    border-radius: 2px;
+    color: white;
     cursor: pointer;
 }
 

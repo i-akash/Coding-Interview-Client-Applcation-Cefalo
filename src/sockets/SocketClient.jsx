@@ -1,8 +1,16 @@
 import io from "socket.io-client";
-import { CONNECT, ALL_ROOM, ALL_CLIENT_IN_ROOM, JOIN_ROOM, LEFT_ROOM, NEW_JOINING_ROOM, LEAVE_ROOM, RUN_SOLUTION } from "./EventType";
+import {
+  CONNECT,
+  ALL_ROOM,
+  ALL_CLIENT_IN_ROOM,
+  JOIN_ROOM,
+  LEFT_ROOM,
+  NEW_JOINING_ROOM,
+  LEAVE_ROOM,
+  RUN_SOLUTION,
+} from "./EventType";
 const url = "http://localhost:80";
 const cb = (message = "default message") => console.log(message);
-
 
 export const SocketClient = function () {
   this.socket = io(url);
@@ -25,14 +33,16 @@ SocketClient.prototype.onReconnectAttempt = function (callback = cb) {
 //
 
 // emit
-SocketClient.prototype.fetchFromNamespace = function (eventName, nsp = '/', onResponse = cb) {
-  console.log('Fetch From Namespace : ', eventName);
+SocketClient.prototype.fetchFromNamespace = function (
+  eventName,
+  onResponse = cb
+) {
+  console.log("Fetch From Namespace : ", eventName);
   //callback(rooms) invoked by server
-  this.socket.emit(eventName, nsp, onResponse)
-}
+  this.socket.emit(eventName, onResponse);
+};
 
 // listen
-
 
 //
 //
@@ -41,44 +51,51 @@ SocketClient.prototype.fetchFromNamespace = function (eventName, nsp = '/', onRe
 //
 
 //emit
-SocketClient.prototype.fetchFromRoom = function (eventName, room = "my room", onResponse = cb) {
+SocketClient.prototype.fetchFromRoom = function (
+  eventName,
+  room = "my room",
+  onResponse = cb
+) {
   //callback(clients) invoked by server
-  this.socket.emit(eventName, room, onResponse)
-}
+  this.socket.emit(eventName, room, onResponse);
+};
 
-SocketClient.prototype.joinRoom = function (userInfo = {}, serverAck = cb) {
-  this.socket.emit(JOIN_ROOM, userInfo, serverAck)
-}
+SocketClient.prototype.joinRoom = function (joinInfo = {}, serverAck = cb) {
+  console.log("join --> ", joinInfo);
+
+  this.socket.emit(JOIN_ROOM, joinInfo, serverAck);
+};
 
 SocketClient.prototype.leaveRoom = function (room = "myRoom", serverAck = cb) {
-  this.socket.emit(LEAVE_ROOM, room, serverAck)
-}
+  this.socket.emit(LEAVE_ROOM, room, serverAck);
+};
 
 SocketClient.prototype.disconnect = function () {
   this.socket.close();
 };
 
-
-SocketClient.prototype.pushToRoom = function (eventName, room, payload, ackCallback = cb) {
+SocketClient.prototype.pushToRoom = function (
+  eventName,
+  room,
+  payload,
+  ackCallback = cb
+) {
   this.socket.emit(eventName, { room, payload }, ackCallback);
-}
+};
 
 SocketClient.prototype.runSolution = function (solution, onResponse = cb) {
-  this.socket.emit(RUN_SOLUTION, solution, onResponse)
-}
-
+  this.socket.emit(RUN_SOLUTION, solution, onResponse);
+};
 
 //listen
 SocketClient.prototype.listeningOn = function (eventName, callback = cb) {
-  this.socket.on(eventName, callback)
-}
-
-
-SocketClient.prototype.onDisconnect = function (callback = cb) {
-  this.socket.on("disconnect", reason => callback(reason));
+  this.socket.on(eventName, callback);
 };
 
+SocketClient.prototype.onDisconnect = function (callback = cb) {
+  this.socket.on("disconnect", (reason) => callback(reason));
+};
 
 const socketClient = new SocketClient();
 
-export default socketClient 
+export default socketClient;

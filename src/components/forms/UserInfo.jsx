@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import SelectOrCreate from "../common/dropdown/SelectOrCreate";
-import { Form, Header, Transition, Message, Button } from "semantic-ui-react";
+import {
+  Form,
+  Header,
+  Transition,
+  Message,
+  Button,
+  Checkbox,
+} from "semantic-ui-react";
 
 import socketClient from "../../sockets/SocketClient";
 
@@ -13,25 +20,38 @@ export default class UserInfo extends Component {
     userName: "",
     userRole: "",
     userRoom: "",
+    roomPassword: "",
+    privateRoom: false,
+    roomPermissionNeeded: false,
+
     formError: {},
   };
 
   onChange = (event) =>
     this.setState({ [event.target.name]: event.target.value });
-
-  onSelectRoom = (value) => {
-    this.setState({ userRoom: value });
+  onSelectRoom = ({ text, description }) => {
+    this.setState({
+      userRoom: text,
+      privateRoom: description === "private",
+      roomPermissionNeeded: !!!description,
+    });
   };
 
   onSubmit = (event) => {
     event.preventDefault();
-    const { userName, userRole, userRoom } = this.state;
-    this.isUserNameTaken({ userName, userRoom }, (status) => {
-      if (status)
+    const { userName, userRole, userRoom, roomPassword } = this.state;
+    this.isUserNameTaken({ userName, userRoom }, (isTaken) => {
+      if (isTaken)
         this.setState({
-          formError: { userName: [`${userName} is already taken (-_-)`] },
+          formError: { userName: `${userName} is already taken (-_-)` },
         });
-      else this.props.onEnter({ userName, userRole, userRoom });
+      else {
+        this.setState({ formError: {} });
+        this.props.onEnter({
+          userInfo: { userName, userRole, userRoom },
+          roomPassword,
+        });
+      }
     });
   };
 
@@ -51,15 +71,27 @@ export default class UserInfo extends Component {
   };
 
   render() {
-    const { userName, userRole, loading, status, formError } = this.state;
-    const { roomOptions, roleOptions } = this.props;
+    const {
+      userName,
+      loading,
+      formError,
+      privateRoom,
+      roomPassword,
+      roomPermissionNeeded,
+    } = this.state;
+    const { roomOptions, roleOptions, joinError } = this.props;
 
     return (
       <div className="form-container">
         <Form size="small" loading={loading} onSubmit={this.onSubmit}>
-          <Header color="green" textAlign="center" content="Entrance" />
-          <Transition visible={!!status} animation="fade" duration={800}>
-            <Message negative list={status} />
+          <Header
+            color="green"
+            textAlign="center"
+            content="Entrance"
+            style={{ marginBottom: "4rem" }}
+          />
+          <Transition visible={!!joinError} animation="fade" duration={800}>
+            <Message negative content={joinError} />
           </Transition>
           <Form.Field>
             <Form.Input
@@ -72,17 +104,19 @@ export default class UserInfo extends Component {
               placeholder="userName"
               error={
                 !!formError.userName && {
-                  content: formError.userName[0],
+                  content: formError.userName,
                   pointing: "below",
                 }
               }
             />
           </Form.Field>
+
           <Form.Field>
             <SelectOrCreate
               placeholder="Choose Role"
+              allowAdditions={false}
               options={roleOptions}
-              onSelect={(value) => this.setState({ userRole: value })}
+              onSelect={({ text }) => this.setState({ userRole: text })}
             />
           </Form.Field>
           <Form.Field>
@@ -93,9 +127,31 @@ export default class UserInfo extends Component {
               onFocus={this.props.onChooseRoomFocus}
             />
           </Form.Field>
-          <Button size="mini" color="green">
-            Enter
-          </Button>
+          {roomPermissionNeeded && (
+            <React.Fragment>
+              <Checkbox
+                label={"Private"}
+                onChange={() => this.setState({ privateRoom: !privateRoom })}
+                checked={privateRoom}
+              />{" "}
+              <br />
+            </React.Fragment>
+          )}
+          {privateRoom && (
+            <Form.Field>
+              <Form.Input
+                icon="key"
+                iconPosition="left"
+                type="password"
+                required
+                name="roomPassword"
+                value={roomPassword}
+                onChange={this.onChange}
+                placeholder="Room Password"
+              />
+            </Form.Field>
+          )}
+          <Button icon="sign in" content="Join" size="mini" color="green" />
         </Form>
       </div>
     );

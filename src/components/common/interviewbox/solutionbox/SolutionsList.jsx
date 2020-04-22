@@ -78,7 +78,7 @@ class SolutionsList extends Component {
                 index={index}
                 onClick={this.handleClick}
               >
-                <Label>Language :</Label> {solution.language}
+                <Label size="mini">Language :</Label> {solution.language}
                 <Author
                   userName={solution.userName}
                   date={solution.timeStamp}
@@ -96,12 +96,12 @@ class SolutionsList extends Component {
                   }
                 />
                 <Button
-                  size="tiny"
+                  size="mini"
+                  icon="settings"
+                  content="Run"
                   color="green"
                   onClick={() => this.runSolution(solution)}
-                >
-                  run
-                </Button>
+                />
               </Accordion.Content>
             </div>
           ))}

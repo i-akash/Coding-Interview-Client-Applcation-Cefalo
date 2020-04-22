@@ -77,7 +77,7 @@ export default class ChatTextArea extends React.Component {
     this.setState({ editorState: EditorState.createEmpty() });
   };
   render() {
-    const { selectedCodeObject } = this.props;
+    const { selectedCodeObject, clearCodeSelection } = this.props;
     const { emojiToggle, editorState } = this.state;
     return (
       <div className={Styles.chatUserControl}>
@@ -88,7 +88,7 @@ export default class ChatTextArea extends React.Component {
           />
         )}
         {!!selectedCodeObject.code.length && (
-          <div className={Styles.code}>
+          <div className={Styles.code} onClick={clearCodeSelection}>
             {selectedCodeObject.code}
             <Author
               userName={selectedCodeObject.userName}

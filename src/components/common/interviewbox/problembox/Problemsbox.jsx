@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 
 import { connect } from "react-redux";
 import ProblemForm from "./ProblemForm";
 import Problem from "./Problem";
 import FloatingPage from "../../floating/FloatingPage";
 import { seenProblemNotifyAction } from "../../../../redux/actions/NotifyActions";
+import socketClient from "../../../../sockets/SocketClient";
+import { REMOVE_PROBLEM } from "../../../../sockets/EventType";
 
 class Problemsbox extends Component {
   state = {
@@ -29,31 +31,59 @@ class Problemsbox extends Component {
   toggleEditor = () =>
     this.setState({ editorToggler: !this.state.editorToggler });
 
+  eraseProblem = () =>
+    socketClient.pushToRoom(
+      REMOVE_PROBLEM,
+      this.props.room.name,
+      "",
+      (error) => {
+        console.log(error);
+      }
+    );
   getControllbtn = () => {
     const myUserName = sessionStorage.getItem("userName");
-    const myUserRole = sessionStorage.getItem("userRole");
     const { editorToggler, problem } = this.state;
     const { problemStatement, userName } = problem;
 
     if (editorToggler)
       return (
-        <Button color="green" size="mini" onClick={this.toggleEditor}>
-          Back
-        </Button>
+        <Button
+          icon="arrow left"
+          circular
+          size="mini"
+          onClick={this.toggleEditor}
+        />
       );
 
-    if (!!problemStatement === false && myUserRole === "Interviewer")
+    if (!!problemStatement === false && myUserName === this.props.room.owner)
       return (
-        <Button color="green" size="mini" onClick={this.toggleEditor}>
-          Add
-        </Button>
+        <Button
+          color="green"
+          size="mini"
+          icon="plus"
+          circular
+          onClick={this.toggleEditor}
+        />
       );
 
-    if (userName === myUserName && myUserRole === "Interviewer")
+    if (myUserName === this.props.room.owner)
       return (
-        <Button color="green" size="mini" onClick={this.toggleEditor}>
-          Edit
-        </Button>
+        <React.Fragment>
+          <Button
+            color="green"
+            size="mini"
+            icon="edit"
+            circular
+            onClick={this.toggleEditor}
+          />
+          <Button
+            icon="close"
+            circular
+            color="red"
+            size="mini"
+            onClick={this.eraseProblem}
+          />
+        </React.Fragment>
       );
   };
 
@@ -92,6 +122,7 @@ class Problemsbox extends Component {
 
 const mapStateToProps = (state) => ({
   problems: state.Problems,
+  room: state.Room,
 });
 
 export default connect(mapStateToProps, { seenProblemNotifyAction })(

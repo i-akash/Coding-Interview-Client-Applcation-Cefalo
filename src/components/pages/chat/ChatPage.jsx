@@ -38,6 +38,7 @@ class ChatPage extends Component {
     return (
       <div className={Styles.parentBox}>
         <Sidebar_
+          owner={this.props.room.owner}
           onExpand={this.onExpand}
           userWindow={userWindow}
           logOutRoom={this.logOutRoom}
@@ -50,6 +51,10 @@ class ChatPage extends Component {
     );
   }
 }
-export default connect(null, {
+
+const mapStateToProps = (state) => ({
+  room: state.Room,
+});
+export default connect(mapStateToProps, {
   removeAllMessageAction,
 })(ChatPage);

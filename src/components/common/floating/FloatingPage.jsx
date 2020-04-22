@@ -11,7 +11,13 @@ export default function FloatingPage({
   children,
 }) {
   return (
-    <Modal open={open} closeIcon onClose={toggle} size="small">
+    <Modal
+      dimmer="blurring"
+      open={open}
+      closeIcon
+      onClose={toggle}
+      size="small"
+    >
       <Header icon={icon} content={header} textAlign="center" />
       <Modal.Content>{children}</Modal.Content>
       <Modal.Actions>
