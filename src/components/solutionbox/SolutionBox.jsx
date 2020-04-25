@@ -4,10 +4,10 @@ import SolutionsList from "./SolutionsList";
 import { Button } from "semantic-ui-react";
 
 import { connect } from "react-redux";
-import { REMOVE_ALL_SOLUTION } from "../../../../sockets/EventType";
-import { removeAllSolutionAction } from "../../../../redux/actions/SolutionActions";
-import socketClient from "../../../../sockets/SocketClient";
-import { seenSolutionNotifyAction } from "../../../../redux/actions/NotifyActions";
+import { REMOVE_ALL_SOLUTION } from "../../sockets/EventType";
+import { removeAllSolutionAction } from "../../redux/actions/SolutionActions";
+import socketClient from "../../sockets/SocketClient";
+import { seenSolutionNotifyAction } from "../../redux/actions/NotifyActions";
 
 class SolutionBox extends Component {
   state = {

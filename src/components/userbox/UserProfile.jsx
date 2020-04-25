@@ -10,12 +10,9 @@ import {
   Header,
 } from "semantic-ui-react";
 import { connect } from "react-redux";
-import SelectOrCreate from "../../dropdown/SelectOrCreate";
-import socketClient from "../../../../sockets/SocketClient";
-import {
-  ALL_CLIENT_IN_ROOM,
-  CHANGE_ROOM_INFO,
-} from "../../../../sockets/EventType";
+import SelectOrCreate from "../../shared_components/dropdown/SelectOrCreate";
+import socketClient from "../../sockets/SocketClient";
+import { ALL_CLIENT_IN_ROOM, CHANGE_ROOM_INFO } from "../../sockets/EventType";
 
 class UserProfile extends Component {
   state = {

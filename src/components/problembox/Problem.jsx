@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Styles from "./Problembox.module.css";
 import { Header, Label, Segment, Grid } from "semantic-ui-react";
-import Author from "../../author/Author";
+import Author from "../../shared_components/author/Author";
 
 const initState = {
   userName: "",

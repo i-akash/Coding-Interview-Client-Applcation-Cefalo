@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Styles from "./Chatbox.module.css";
 import MessageBox from "./MessageBox";
-import socketClient from "../../../../sockets/SocketClient";
-
-import { NEW_MESSAGE, MESSAGE_TYPING } from "../../../../sockets/EventType";
 import ChatTextArea from "./ChatTextArea";
+
+import socketClient from "../../sockets/SocketClient";
+import { NEW_MESSAGE, MESSAGE_TYPING } from "../../sockets/EventType";
 import { connect } from "react-redux";
-import { seenMessageNotifyAction } from "../../../../redux/actions/NotifyActions";
+import { seenMessageNotifyAction } from "../../redux/actions/NotifyActions";
 
 class Chatbox extends Component {
   state = {

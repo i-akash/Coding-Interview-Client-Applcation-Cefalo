@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import Sidebar_ from "../../common/sidebar/Sidebar_";
-import ActiveUsers from "../../common/users/ActiveUsers";
-import InterviewBox from "../../common/interviewbox/InterviewBox";
+import Sidebar_ from "../../shared_components/sidebar/Sidebar_";
+import ActiveUsers from "../../shared_components/users/ActiveUsers";
+import InterviewBox from "../../components/interviewbox";
 
 // css
 import Styles from "./ChatPage.module.css";
-import socketClient from "../../../sockets/SocketClient";
-import { REMOVE_ALL_MESSAGES } from "../../../sockets/EventType";
+import socketClient from "../../sockets/SocketClient";
+import { REMOVE_ALL_MESSAGES } from "../../sockets/EventType";
 
 import { connect } from "react-redux";
-import { removeAllMessageAction } from "../../../redux/actions/ChatActions";
+import { removeAllMessageAction } from "../../redux/actions/ChatActions";
 
 class ChatPage extends Component {
   state = {

@@ -1,7 +1,7 @@
 import React from "react";
 
-import ChatPage from "./components/pages/chat/ChatPage";
-import LoginPage from "./components/pages/login/LoginPage";
+import ChatPage from "./pages/chat";
+import LoginPage from "./pages/login";
 import socketClient from "./sockets/SocketClient";
 
 //redux
@@ -151,7 +151,7 @@ class App extends React.Component {
     const { page, userInfo } = this.state;
     return (
       <div>
-        {page == 1 ? (
+        {page === 1 ? (
           <LoginPage onRoomJoined={this.onRoomJoined} />
         ) : (
           <ChatPage userInfo={userInfo} logOutRoom={this.logOutRoom} />

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Styles from "./Problembox.module.css";
-import TextEditor from "../../editor/TextEditor";
+import TextEditor from "../../shared_components/text_editor/TextEditor";
 import {
   Button,
   Header,
@@ -10,14 +10,14 @@ import {
   Icon,
   Grid,
 } from "semantic-ui-react";
-import socketClient from "../../../../sockets/SocketClient";
+import socketClient from "../../sockets/SocketClient";
 
-import { NEW_PROBLEM } from "../../../../sockets/EventType";
-import ResizableTextarea from "../../textarea/ResizableTextArea";
-import CodeEditor from "../../editor/CodeEditor";
-import { cleanSpaceNnewLine } from "../../../../utils/CleanUp";
-import FloatingPage from "../../floating/FloatingPage";
-import CollapseList from "../../listing/CollapseList";
+import { NEW_PROBLEM } from "../../sockets/EventType";
+import ResizableTextarea from "../../shared_components/textarea/ResizableTextArea";
+import CodeEditor from "../../shared_components/code_editor/CodeEditor";
+import { cleanSpaceNnewLine } from "../../utils/CleanUp";
+import FloatingPage from "../../shared_components/floating/FloatingPage";
+import CollapseList from "../../shared_components/listing/CollapseList";
 
 class ProblemForm extends Component {
   state = {

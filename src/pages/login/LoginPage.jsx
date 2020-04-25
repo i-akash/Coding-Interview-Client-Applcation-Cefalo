@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import UserInfo from "../../forms/UserInfo";
-import socketClient from "../../../sockets/SocketClient";
+import UserInfo from "../../components/forms/UserInfo";
+import socketClient from "../../sockets/SocketClient";
 
 //css
 import Styles from "./LoginPage.module.css";
-import { ALL_ROOM } from "../../../sockets/EventType";
+import { ALL_ROOM } from "../../sockets/EventType";
 import { Header } from "semantic-ui-react";
 
 const roleOptions = [

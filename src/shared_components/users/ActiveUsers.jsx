@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Segment, Header } from "semantic-ui-react";
-import socketClient from "../../../sockets/SocketClient";
+import socketClient from "../../sockets/SocketClient";
 import {
   ALL_CLIENT_IN_ROOM,
   NEW_JOINING_ROOM,
   LEFT_ROOM,
   KICK_OUT,
-} from "../../../sockets/EventType";
+} from "../../sockets/EventType";
 
 import { connect } from "react-redux";
 

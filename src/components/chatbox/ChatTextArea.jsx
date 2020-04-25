@@ -6,7 +6,7 @@ import { stateToHTML } from "draft-js-export-html";
 
 import Picker from "emoji-picker-react";
 import Styles from "./ChatTextarea.module.css";
-import Author from "../../author/Author";
+import Author from "../../shared_components/author/Author";
 
 export default class ChatTextArea extends React.Component {
   constructor(props) {

@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import { Button, Transition, Checkbox, Segment, Icon } from "semantic-ui-react";
-import CodeEditor from "../../editor/CodeEditor";
+import CodeEditor from "../../shared_components/code_editor/CodeEditor";
 import Styles from "./Editorbox.module.css";
 
-import socketClient from "../../../../sockets/SocketClient";
-import ResizableTextarea from "../../textarea/ResizableTextArea";
-import { NEW_SOLUTION } from "../../../../sockets/EventType";
-import SelectOrCreate from "../../dropdown/SelectOrCreate";
+import socketClient from "../../sockets/SocketClient";
+import ResizableTextarea from "../../shared_components/textarea/ResizableTextArea";
+import { NEW_SOLUTION } from "../../sockets/EventType";
+import SelectOrCreate from "../../shared_components/dropdown/SelectOrCreate";
 
 import { connect } from "react-redux";
-import { getJsTemplate, getPyTemplate } from "../../../../utils/CodeFornater";
-import { cleanSpaceNnewLine } from "../../../../utils/CleanUp";
-import FloatingPage from "../../floating/FloatingPage";
-import CollapseList from "../../listing/CollapseList";
-import { combineInputResult } from "../../../../utils/OutputParser";
+import { getJsTemplate, getPyTemplate } from "../../utils/CodeFornater";
+import { cleanSpaceNnewLine } from "../../utils/CleanUp";
+import FloatingPage from "../../shared_components/floating/FloatingPage";
+import CollapseList from "../../shared_components/listing/CollapseList";
+import { combineInputResult } from "../../utils/OutputParser";
 
 class Editorbox extends Component {
   state = {

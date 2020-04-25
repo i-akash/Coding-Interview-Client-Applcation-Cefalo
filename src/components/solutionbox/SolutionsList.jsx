@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import CodeHighlightInteraction from "../../editor/CodeHighlightInteraction";
+import CodeHighlightInteraction from "../../shared_components/code_highlighter/CodeHighlightInteraction";
 import { connect } from "react-redux";
 import { Button, Accordion, Header, Label, Segment } from "semantic-ui-react";
-import Author from "../../author/Author";
-import socketClient from "../../../../sockets/SocketClient";
-import { combineInputResult } from "../../../../utils/OutputParser";
-import FloatingPage from "../../floating/FloatingPage";
-import CollapseList from "../../listing/CollapseList";
+import Author from "../../shared_components/author/Author";
+import socketClient from "../../sockets/SocketClient";
+import { combineInputResult } from "../../utils/OutputParser";
+import FloatingPage from "../../shared_components/floating/FloatingPage";
+import CollapseList from "../../shared_components/listing/CollapseList";
 
 class SolutionsList extends Component {
   state = {

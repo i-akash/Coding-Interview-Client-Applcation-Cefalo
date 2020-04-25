@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SelectOrCreate from "../common/dropdown/SelectOrCreate";
+import SelectOrCreate from "../../shared_components/dropdown/SelectOrCreate";
 import {
   Form,
   Header,

@@ -1,9 +1,9 @@
 import React from "react";
 import { Tab, Menu, Label, Icon } from "semantic-ui-react";
-import Chatbox from "./chatbox/Chatbox";
-import Problemsbox from "./problembox/Problemsbox";
-import Solutionbox from "./solutionbox/SolutionBox";
-import UserProfile from "./userbox/UserProfile";
+import Chatbox from "../chatbox";
+import Problemsbox from "../problembox/Problemsbox";
+import Solutionbox from "../solutionbox/SolutionBox";
+import UserProfile from "../userbox/UserProfile";
 import Styles from "./InterviewBox.module.css";
 import { connect } from "react-redux";
 

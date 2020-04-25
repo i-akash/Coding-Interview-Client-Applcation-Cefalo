@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Comment, Segment } from "semantic-ui-react";
 import Styles from "./MessageBox.module.css";
-import CodeHighlightInteraction from "../../editor/CodeHighlightInteraction";
-import { formatDate } from "../../../../utils/DateFormater";
+import CodeHighlightInteraction from "../../shared_components/code_highlighter/CodeHighlightInteraction";
+import { formatDate } from "../../utils/DateFormater";
+import Author from "../../shared_components/author/Author";
 
 //redux
 import { connect } from "react-redux";
-import Author from "../../author/Author";
 
 const myselfAlign = (userName1, userName2) =>
   userName1 === userName2 ? "right" : "left";

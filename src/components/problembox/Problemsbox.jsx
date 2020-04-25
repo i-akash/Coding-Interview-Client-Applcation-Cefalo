@@ -4,10 +4,10 @@ import { Button, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import ProblemForm from "./ProblemForm";
 import Problem from "./Problem";
-import FloatingPage from "../../floating/FloatingPage";
-import { seenProblemNotifyAction } from "../../../../redux/actions/NotifyActions";
-import socketClient from "../../../../sockets/SocketClient";
-import { REMOVE_PROBLEM } from "../../../../sockets/EventType";
+import FloatingPage from "../../shared_components/floating/FloatingPage";
+import { seenProblemNotifyAction } from "../../redux/actions/NotifyActions";
+import socketClient from "../../sockets/SocketClient";
+import { REMOVE_PROBLEM } from "../../sockets/EventType";
 
 class Problemsbox extends Component {
   state = {
