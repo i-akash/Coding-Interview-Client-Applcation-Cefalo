@@ -1,0 +1,41 @@
+.messageBox {
+    flex-grow: 2;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 1rem;
+}
+
+
+.codeBlockLeft {
+    width: fit-content;
+    max-width: 100%;
+    overflow-x: auto;
+    font-weight: 100;
+    font-style: italic !important;
+    border-left: 2px solid rgba(0, 119, 255, 0.63);
+}
+
+.codeBlockRight {
+    margin-left: auto;
+    text-align: justify;
+    width: fit-content;
+    max-width: 100%;
+    overflow-x: auto;
+    font-weight: 100;
+    font-style: italic !important;
+    border-right: 2px solid rgba(0, 119, 255, 0.63);
+}
+
+
+
+.codeBlockLeft::before,
+.codeBlockRight::before {
+    content: "❝";
+    font-size: x-large;
+}
+
+.codeBlockLeft::after,
+.codeBlockRight::after {
+    content: "❞";
+    font-size: x-large;
+}

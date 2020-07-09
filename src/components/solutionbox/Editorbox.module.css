@@ -1,0 +1,9 @@
+.monacoEditor {
+    margin: 2px;
+    width: 100%;
+    padding: 25px 3px 5px 3px;
+    border: 1px solid rgba(128, 128, 128, 0.171);
+    border-radius: 2px;
+    box-shadow: inset 0 0 3px #cfcece70;
+    background-color: white;
+}

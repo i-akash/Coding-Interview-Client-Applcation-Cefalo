@@ -1,0 +1,11 @@
+.storyMetaData {
+    /* color: var(--gray-font-color); */
+    font-size: 10px;
+    margin: 2px;
+}
+
+.storyBoldMetaData {
+    font-style: italic;
+    color: gray;
+    letter-spacing: .3px;
+}

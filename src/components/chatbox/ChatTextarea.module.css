@@ -1,0 +1,62 @@
+.chatUserControl {
+    padding: 3px;
+    width: 100%;
+    background-color: rgb(235, 238, 238);
+}
+
+.chatInput {
+    padding: 2px;
+    background-color: rgb(235, 238, 238);
+    margin-right: 3px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.code {
+    padding: 5px;
+    border-radius: 5px 5px 0px 0px;
+    display: block;
+    font-style: italic;
+    font-family: monospace;
+    font-size: 13px;
+    color: rgb(64, 128, 128);
+    width: 100%;
+    max-width: 44vw;
+    overflow-x: auto;
+    background-color: rgb(224, 225, 226);
+    white-space: pre;
+}
+
+.code::before {
+    content: '“';
+    font-size: x-large;
+
+}
+
+.code::after {
+    content: '”';
+    font-size: x-large;
+}
+
+.leftBtns {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.codeBlock {
+    border: 1px solid rgba(177, 177, 177, 0.253);
+    border-radius: 2px;
+    padding: 2px;
+    background-color: rgba(177, 177, 177, 0.11) !important;
+    margin: 2px !important;
+
+    font-family: monospace;
+    font-size: 13px;
+    color: rgb(64, 128, 128);
+
+}

@@ -1,0 +1,23 @@
+.interviewBox {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+}
+
+.NoNotify {
+    font-size: smaller;
+    margin-left: 5px;
+    padding: 2px;
+    background-color: white;
+    color: white;
+    border-radius: 2px;
+}
+
+.notify {
+    font-size: smaller;
+    margin-left: 5px;
+    padding: 2px;
+    background-color: #21ba45;
+    color: white;
+    border-radius: 2px;
+}

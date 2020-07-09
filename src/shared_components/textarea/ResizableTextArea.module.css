@@ -1,0 +1,39 @@
+.textarea {
+    flex-grow: 2;
+    box-sizing: border-box;
+    border: none;
+    resize: none;
+    font-size: 13px;
+    line-height: 18px;
+    overflow: auto;
+    height: auto;
+    width: 100%;
+    padding: 5px;
+    margin: 2px;
+    border-radius: 0px 0px 5px 5px;
+    background-color: rgb(224, 225, 226);
+}
+
+.textarea::-webkit-input-placeholder {
+    color: rgb(165, 165, 165);
+}
+
+.textarea::-moz-placeholder {
+    color: rgb(165, 165, 165);
+}
+
+.textarea:-ms-input-placeholder {
+    color: rgb(165, 165, 165);
+}
+
+.textarea::-ms-input-placeholder {
+    color: rgb(165, 165, 165);
+}
+
+.textarea::placeholder {
+    color: rgb(165, 165, 165);
+}
+
+.textarea:focus {
+    outline: none;
+}

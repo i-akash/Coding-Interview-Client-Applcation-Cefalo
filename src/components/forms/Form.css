@@ -1,0 +1,22 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 30rem;
+    background-color: white;
+    border: 1px solid whitesmoke;
+    box-shadow: 2px 2px 1rem 2px rgba(150, 149, 149, 0.089);
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 500px) {
+    .form-container {
+        width: 100%;
+    }
+}
+
+.form-container .ui.form {
+    width: 94%;
+}
