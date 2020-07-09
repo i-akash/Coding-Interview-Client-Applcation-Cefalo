@@ -7,6 +7,12 @@
 - `npm install`
 - `npm start`
 
+
+## Demo
+    click on the gif to see video
+[![Demo CountPages alpha](https://i.ibb.co/jTFwQF9/Coding-Interview-app-demo-Nodejs-Reactjs.gif)](https://drive.google.com/file/d/1XXRSX7zCXsuz_dHYV-YNKr5kKBYTOz47/view?usp=sharing)
+
+
 ## Docs
 
 #### Create Problem Tab
@@ -40,12 +46,6 @@
 
 ##### code selection, inline code format, emoji
 
-![pic1](https://i.ibb.co/mCdMy0Q/Screenshot-9.png)
-
 ##### custom input and test case support with python and js
 
-![pic2](https://i.ibb.co/Z2cLzp0/Screenshot-10.png)
-
 ##### multiple room support and
-
-![pic3](https://i.ibb.co/g7syr3H/Screenshot-11.png)
