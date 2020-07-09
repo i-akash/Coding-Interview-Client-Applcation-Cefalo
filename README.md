@@ -45,4 +45,5 @@
 ## Features
 - code selection, inline code format, emoji
 - custom input and test case support with python and js
-- multiple room support and
+- multiple room support
+- public and private room
