@@ -1,7 +1,11 @@
 # Coding Interview Client Application
 
+# Server part
+ [Server Repository ](https://github.com/i-akash/Coding-Interview-Server-Applcation-Cefalo)
+
 #### Run Instruction
 
+- `git clone https://github.com/i-akash/Coding-Interview-Server-Applcation-Cefalo.git`
 - `git clone https://github.com/i-akash/Coding-Interview-Client-Applcation-Cefalo.git`
 - `cd Coding-Interview-Client-Applcation-Cefalo`
 - `npm install`
