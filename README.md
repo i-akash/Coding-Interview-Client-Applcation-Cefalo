@@ -3,6 +3,11 @@
 # Server Repository
  [Coding Interview Server](https://github.com/i-akash/Coding-Interview-Server-Applcation-Cefalo)
 
+
+#### prerequisite
+
+- redis db server
+
 #### Run Instruction
 
 - `git clone https://github.com/i-akash/Coding-Interview-Server-Applcation-Cefalo.git`
