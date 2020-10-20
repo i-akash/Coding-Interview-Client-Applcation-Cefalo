@@ -1,7 +1,7 @@
 # Coding Interview Client Application
 
-# Server part
- [Server Repository ](https://github.com/i-akash/Coding-Interview-Server-Applcation-Cefalo)
+# Server Repository
+ [Coding Interview Server](https://github.com/i-akash/Coding-Interview-Server-Applcation-Cefalo)
 
 #### Run Instruction
 
